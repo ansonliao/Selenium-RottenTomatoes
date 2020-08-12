@@ -18,8 +18,6 @@ public class SelenideWebDriverProvider implements WebDriverProvider {
     @Nonnull
     @Override
     public WebDriver createDriver(@Nonnull DesiredCapabilities desiredCapabilities) {
-        Configuration.timeout = 10000;     // 10 seconds
-        Configuration.startMaximized = true;
         setMobileEmulation();
         WebDriverManager.chromedriver().setup();
         return new ChromeDriver(chromeOptions);

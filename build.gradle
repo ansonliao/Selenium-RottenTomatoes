@@ -13,6 +13,7 @@ targetCompatibility = JavaVersion.VERSION_1_8
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
@@ -27,6 +28,9 @@ dependencies {
     compile group: "io.rest-assured", name: "rest-assured", version: "4.2.0"
     compile group: "com.google.guava", name: "guava", version: "29.0-jre"
     compile group: "com.jayway.jsonpath", name: "json-path", version: "2.4.0"
+    compile group: "io.github.sskorol", name: "test-data-supplier", version: "1.7.0", {
+        exclude group: "org.testng", module: "testng"
+    }
 }
 
 tasks.withType(Test).all { testTask ->
