@@ -39,6 +39,12 @@ test{
     useTestNG()
 }
 
+task debug(type: Test) {
+    useTestNG {
+        includeGroups 'debug'
+    }
+}
+
 allure {
     version = "2.13.5"
     aspectjweaver = true

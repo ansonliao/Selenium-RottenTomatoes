@@ -21,7 +21,7 @@ public class GoogleTest {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(false));
     }
 
-    @Test
+    @Test(groups = "debug")
     public void f1() {
         System.out.println(Configuration.timeout);
         open(url);
