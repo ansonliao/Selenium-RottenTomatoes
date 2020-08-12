@@ -2,6 +2,8 @@ package example;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -16,6 +18,7 @@ public class GoogleTest {
     @BeforeMethod
     public void beforeMethod() {
         Configuration.browser = SelenideWebDriverProvider.class.getName();
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(false));
     }
 
     @Test
