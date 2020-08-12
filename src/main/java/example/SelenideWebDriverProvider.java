@@ -13,17 +13,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SelenideWebDriverProvider implements WebDriverProvider {
+    ChromeOptions chromeOptions = new ChromeOptions();
 
     @Nonnull
     @Override
     public WebDriver createDriver(@Nonnull DesiredCapabilities desiredCapabilities) {
         Configuration.timeout = 10000;     // 10 seconds
         Configuration.startMaximized = true;
-        Map<String, Object> mobileEmulation = new HashMap<>();
-        mobileEmulation.put("deviceName", "iPhone X");
-        ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.setExperimentalOption("mobileEmulation", mobileEmulation);
+        setMobileEmulation();
         WebDriverManager.chromedriver().setup();
         return new ChromeDriver(chromeOptions);
     }
+
+    public void setMobileEmulation() {
+        Map<String, Object> mobileEmulation = new HashMap<>();
+        mobileEmulation.put("deviceName", "iPhone X");
+        chromeOptions.setExperimentalOption("mobileEmulation", mobileEmulation);
+    }
+
+
 }
